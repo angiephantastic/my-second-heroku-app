@@ -4,9 +4,7 @@ const express = require('express')
 const mysql = require('mysql2')
 
 const app = express()
-const port = process.env.PORT || 3306
-
-const bodyParser = require("body-parser")
+const port = process.env.PORT || 3000
 
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -14,8 +12,6 @@ const connection = mysql.createConnection({
     password: process.env.DB_PASS,
     database: process.env.DB_NAME
 })
-
-app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
 
