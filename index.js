@@ -63,6 +63,19 @@ app.get('/api/employees/:id', function(req, res) {
     })
 })
 
+app.post(`/api/employees/add`, function(req, res){
+    const body = req.body
+    const id = body.employeeNumber
+    const lastName = body.lastName
+    const firstName = body. firstName
+
+    let addEmployee = `INSERT INTO employees (employeeNumber, LastName, FirstName) VALUES (${id}, ${lastName}, ${firstName})`
+
+    connection.query(addEmployee, function(error, result){
+        res.json(result)
+    })
+})
+
 app.listen(port, function() {
     console.log(`running on port ${port}`)
 })
